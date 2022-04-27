@@ -1,0 +1,30 @@
+package edu.duke.ncm31.battleship;
+
+public class BoardTextView {
+  /* This class handles text diplay of the board, one for the player's and 
+   * one for the enemy's */
+
+  private final Board toDisplay;
+  /**
+   * this constructs a BoardView, given the board it will display.
+   *@param toDisplay is the board to display. */
+
+  public BoardTextView(Board toDisplay){
+    this.toDisplay = toDisplay;
+  }
+
+  public String displayMyOwnBoard(){
+    return "";
+  }
+
+  String makeHeader(){
+    StringBuilder ans = new StringBuilder("  "); //show 2 spaces
+    String sep = ""; //nothing to | to separate vals
+    for(int i = 0; i < toDisplay.getWidth(); i++){
+      ans.append(sep);
+      ans.append(i);
+      sep = "|";
+    }
+    return ans.toString();
+  }
+}

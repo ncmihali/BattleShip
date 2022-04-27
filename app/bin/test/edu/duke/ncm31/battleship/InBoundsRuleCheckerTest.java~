@@ -1,0 +1,20 @@
+package edu.duke.ncm31.battleship;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+
+public class InBoundsRuleCheckerTest {
+  @Test
+  public void test_InBounds() {
+    V1ShipFactory v1 = new V1ShipFactory();
+    Board<Coordinate> board1= new BattleShipBoard<Coordinate>(10,20);
+    
+    Ship<Character> s1 = v1.makeBattleship(new Placement("A2V"));
+    Ship<Character> s2 = v1.makeCarrier(new Placement("B9H"));
+    InBoundsRuleChecker<Coordinate> newTest = new InBoundsRuleChecker<Coordinate>(null);
+    assertEquals(true, newTest.checkPlacement(s1, board1));
+    
+  }
+
+}

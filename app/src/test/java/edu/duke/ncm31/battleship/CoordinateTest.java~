@@ -1,0 +1,30 @@
+package edu.duke.ncm31.battleship;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
+
+import org.junit.jupiter.api.Test;
+
+public class CoordinateTest {
+  @Test
+  public void test_row_and_column() {
+    Coordinate test = new Coordinate(10, 10);
+    assertEquals(10, test.getRow());
+    assertEquals(10, test.getColumn());
+  }
+
+  @Test
+  public void test_equals(){
+    Coordinate c1 = new Coordinate(1, 2);
+    Coordinate c2 = new Coordinate(1, 2);
+    Coordinate c3 = new Coordinate(1, 3);
+    Coordinate c4 = new Coordinate(3, 2);
+    assertEquals(c1, c1);
+    assertEquals(c1, c2);
+    assertNotEquals(c1, c3);
+    assertNotEquals(c1, c4);
+    assertNotEquals(c3, c4);
+    assertNotEquals(c1, "(1, 2)"); //diff types
+  }
+
+}

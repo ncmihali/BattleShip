@@ -1,0 +1,32 @@
+package edu.duke.ncm31.battleship;
+
+import java.util.HashSet;
+
+public class RectangleShip<T> extends BasicShip<T>{
+
+  public RectangleShip(Coordinate upperLeft, int width, int height, ShipDisplayInfo<T> shipDisplayInfo){
+    super(makeCoords(upperLeft, width, height), shipDisplayInfo);
+  }
+
+  public RectangleShip(Coordinate upperLeft, int width, int height, T data, T onHit){
+    this(upperLeft, width, height, new SimpleShipDisplayInfo<T>(data, onHit));
+  }
+
+  public RectangleShip(Coordinate upperLeft, T data, T onHit){
+    this(upperLeft, 1, 1, data, onHit);
+  }
+  
+  static HashSet<Coordinate> makeCoords(Coordinate upperLeft, int width, int height){
+    HashSet<Coordinate> ans = new HashSet<Coordinate>();
+    int start_column = upperLeft.getColumn();
+    int start_row = upperLeft.getRow();
+    for(int i = start_row; i < start_row + height; i++){
+      for(int k = start_column; k < start_column + width; k++){
+        Coordinate new_coord = new Coordinate(i, k);
+        ans.add(new_coord);
+      }
+    }
+
+    return ans;
+  }
+}

@@ -1,0 +1,44 @@
+package edu.duke.ncm31.battleship;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import java.util.HashSet;
+
+import org.junit.jupiter.api.Test;
+
+public class UniqueShipTest {
+  @Test
+  public void test_constructor() {
+    // this will test the unique ship constructor
+    HashSet<Coordinate> test = new HashSet<Coordinate>();
+    UniqueShip<Character> test_ship = new UniqueShip<Character>("Battleship", new Coordinate(0, 0), 'b', 'b', '*', 'U');
+    assertEquals("Battleship", test_ship.getName());
+    assertEquals(true, test_ship.occupiesCoordinates(new Coordinate(0, 1)));
+    assertEquals(false, test_ship.occupiesCoordinates(new Coordinate(0, 0)));
+    assertEquals(true, test_ship.occupiesCoordinates(new Coordinate(1, 0)));
+    assertEquals(true, test_ship.occupiesCoordinates(new Coordinate(1, 1)));
+    assertEquals(true, test_ship.occupiesCoordinates(new Coordinate(1, 2)));
+
+    test_ship = new UniqueShip<Character>("Battleship", new Coordinate(0, 0), 'b', 'b', '*', 'R');
+    assertEquals(true, test_ship.occupiesCoordinates(new Coordinate(0, 0)));
+    assertEquals(false, test_ship.occupiesCoordinates(new Coordinate(0, 1)));
+    assertEquals(true, test_ship.occupiesCoordinates(new Coordinate(1, 0)));
+    assertEquals(true, test_ship.occupiesCoordinates(new Coordinate(1, 1)));
+    assertEquals(true, test_ship.occupiesCoordinates(new Coordinate(2, 0)));
+
+    test_ship = new UniqueShip<Character>("Battleship", new Coordinate(0, 0), 'b', 'b', '*', 'D');
+    assertEquals(true, test_ship.occupiesCoordinates(new Coordinate(0, 0)));
+    assertEquals(false, test_ship.occupiesCoordinates(new Coordinate(1, 0)));
+    assertEquals(true, test_ship.occupiesCoordinates(new Coordinate(0, 1)));
+    assertEquals(true, test_ship.occupiesCoordinates(new Coordinate(0, 2)));
+    assertEquals(true, test_ship.occupiesCoordinates(new Coordinate(1, 1)));
+
+    test_ship = new UniqueShip<Character>("Battleship", new Coordinate(0, 0), 'b', 'b', '*', 'L');
+    assertEquals(true, test_ship.occupiesCoordinates(new Coordinate(0, 1)));
+    assertEquals(false, test_ship.occupiesCoordinates(new Coordinate(0, 0)));
+    assertEquals(true, test_ship.occupiesCoordinates(new Coordinate(1, 0)));
+    assertEquals(true, test_ship.occupiesCoordinates(new Coordinate(1, 1)));
+    assertEquals(true, test_ship.occupiesCoordinates(new Coordinate(2, 1)));
+  }
+
+}

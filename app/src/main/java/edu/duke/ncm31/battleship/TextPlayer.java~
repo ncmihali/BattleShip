@@ -1,0 +1,40 @@
+package edu.duke.ncm31.battleship;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.PrintStream;
+import java.io.Reader;
+
+public class TextPlayer {
+  final AbstractShipFactory<Character> shipFactory;
+  final Board<Character> theBoard;
+  final BoardTextView view;
+  final BufferedReader inputReader;
+  final PrintStream out;
+  final String name;
+  
+  public TextPlayer(String name, Board<Character> board, Reader input, PrintStream out, AbstractShipFactory<Character> shipFactory){
+    this.name = name;
+    this.theBoard = board;
+    this.inputReader = new BufferedReader(input);
+    this.out = out;
+    this.shipFactory = shipFactory;
+    this.view = new BoardTextView(theBoard);
+  }
+
+  public Placement readPlacement(String prompt) throws IOException{
+    // Print prompt and reads in user placement
+    out.println(prompt);
+    String s = inputReader.readLine();
+    return new Placement(s);
+  }
+
+  public void doOnePlacement() throws IOException{
+    // This method creates a new ship based on user input and places
+    // it on theBoard
+    Placement new_placement = readPlacement("where would you like to place your ship?");
+    Ship<Character> new_ship = shipFactory.makeDestoryer(new_placement);
+    theBoard.tryAddShip(new_ship);
+    out.print(view.displayMyOwnBoard());
+  }
+}

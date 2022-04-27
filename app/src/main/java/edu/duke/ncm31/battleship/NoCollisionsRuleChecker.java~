@@ -1,0 +1,15 @@
+package edu.duke.ncm31.battleship;
+
+public class NoCollisionsRuleChecker<T> extends PlacementRuleChecker<T> {
+
+  public NoCollisionsRuleChecker(PlacementRuleChecker<T> next){
+    super(next);
+  }
+  
+  @Override
+  protected boolean checkMyRule(Ship<T> theShip, Board<T> theBoard) {
+    // This checks if a ship has been placed in an innacurate spot on the board (over another)
+    return false;
+  }
+
+}

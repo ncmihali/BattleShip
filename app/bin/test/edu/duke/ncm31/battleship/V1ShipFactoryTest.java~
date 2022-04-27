@@ -1,0 +1,17 @@
+package edu.duke.ncm31.battleship;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+
+public class V1ShipFactoryTest {
+  @Test
+  public void test_makeShip() {
+    
+  }
+
+  private void checkShip(Sip<Character> testShip, String expectedName, char expectedLetter, Coordinate expectedCoord, Placement expectedPlace){
+    assertEquals(testShip.
+  }
+
+}

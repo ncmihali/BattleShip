@@ -1,0 +1,5 @@
+package edu.duke.ncm31.battleship;
+
+public class BasicShip {
+
+}

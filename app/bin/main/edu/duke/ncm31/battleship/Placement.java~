@@ -1,0 +1,22 @@
+package edu.duke.ncm31.battleship;
+
+public class Placement {
+  public final int where;
+  public final int orientation;
+
+  public Placement(int where, int orientation){
+    this.where = where;
+    this.orientation = orientation;
+  }
+
+  public int getWhere(){
+    return this.where;
+  }
+
+  public int getOrientation(){
+    return this.orientation;
+  }
+
+  @Overide
+  
+}
