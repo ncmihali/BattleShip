@@ -4,5 +4,5 @@ Welcome to Battleship (with a twist), you now can have unique ships with sonar c
 
 To run the game using Gradle:
 ```
-./gradlew run
+./gradlew run --console=plain
 ```
